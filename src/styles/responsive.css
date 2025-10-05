@@ -8,24 +8,51 @@
   
   /* Title Screen responsive adjustments */
   .title-screen h1 {
-    font-size: 48px !important;
+    font-size: 36px !important;
     letter-spacing: 2px !important;
   }
   
   .title-screen p {
-    font-size: 18px !important;
+    font-size: 16px !important;
   }
   
   /* Adjust button size for mobile */
   .title-screen button {
-    width: 80px !important;
-    height: 80px !important;
+    width: 60px !important;
+    height: 60px !important;
   }
   
   /* Adjust positioning for mobile */
   .title-screen .title-container {
     max-width: 90% !important;
     padding: 0 10px !important;
+  }
+  
+  /* Hide or reduce celestial bodies on mobile for better performance */
+  .title-screen .earth-container,
+  .title-screen .sun-container,
+  .title-screen .asteroids-container,
+  .title-screen .satellite-container,
+  .title-screen .rocket-container {
+    transform: scale(0.6) !important;
+  }
+  
+  /* Adjust rocket position for mobile */
+  .title-screen .rocket-container {
+    left: 2% !important;
+    bottom: 8% !important;
+  }
+  
+  /* Adjust Earth position for mobile */
+  .title-screen .earth-container {
+    bottom: -10% !important;
+    left: -15% !important;
+  }
+  
+  /* Adjust Sun position for mobile */
+  .title-screen .sun-container {
+    top: -10% !important;
+    right: -15% !important;
   }
 }
 

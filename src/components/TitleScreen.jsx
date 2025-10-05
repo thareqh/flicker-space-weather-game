@@ -87,12 +87,13 @@ const TitleScreen = () => {
 
       {/* Rocket - Orbiting Earth */}
       <motion.div
+        className="rocket-container"
         style={{
           position: 'absolute',
           left: '5%',
           bottom: '12%',
-          width: '100px',
-          height: '120px',
+          width: '60px',
+          height: '80px',
           zIndex: 6,
           transformOrigin: 'center center'
         }}
@@ -138,6 +139,7 @@ const TitleScreen = () => {
 
       {/* Asteroids - Mid Left */}
       <motion.div
+        className="asteroids-container"
         style={asteroidsContainerStyle}
         initial={{ x: -50, opacity: 0 }}
         animate={{ 
@@ -166,6 +168,7 @@ const TitleScreen = () => {
 
       {/* Earth - Bottom Left (Large) */}
       <motion.div
+        className="earth-container"
         style={earthContainerStyle}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ 
@@ -188,6 +191,7 @@ const TitleScreen = () => {
 
       {/* Satellite - Upper Right */}
       <motion.div
+        className="satellite-container"
         style={satelliteContainerStyle}
         initial={{ x: 50, y: -50, opacity: 0 }}
         animate={{ 
@@ -215,6 +219,7 @@ const TitleScreen = () => {
 
       {/* Sun - Upper Right (Single Large Sun) */}
       <motion.div
+        className="sun-container"
         style={sunsContainerStyle}
         initial={{ x: 100, opacity: 0 }}
         animate={{ 
@@ -355,13 +360,13 @@ const rocketImageStyle = {
   filter: 'drop-shadow(0 0 12px rgba(244, 67, 54, 0.6))'
 };
 
-// Asteroids - Mid Left (Better positioned above Earth, left of title)
+// Asteroids - Mid Left (Reduced size to match localhost)
 const asteroidsContainerStyle = {
   position: 'absolute',
   top: '35%',
-  left: '18%',
-  width: '120px',
-  height: '100px',
+  left: '15%',
+  width: '80px',
+  height: '60px',
   zIndex: 5
 };
 
@@ -372,13 +377,13 @@ const asteroidImageStyle = {
   filter: 'drop-shadow(0 0 8px rgba(158, 158, 158, 0.5))'
 };
 
-// Earth - Bottom Left (Large but reasonable size, half visible at edge)
+// Earth - Bottom Left (Reduced size to match localhost)
 const earthContainerStyle = {
   position: 'absolute',
-  bottom: '-15%',
-  left: '-10%',
-  width: '600px',
-  height: '600px',
+  bottom: '-5%',
+  left: '-5%',
+  width: '300px',
+  height: '300px',
   zIndex: 3
 };
 
@@ -389,33 +394,33 @@ const earthImageStyle = {
   filter: 'drop-shadow(0 0 25px rgba(33, 150, 243, 0.7))'
 };
 
-// Sun - Upper Right (Visible on screen with edge effect)
+// Sun - Upper Right (Reduced size to match localhost)
 const sunsContainerStyle = {
   position: 'absolute',
-  top: '-15%',
-  right: '-10%',
-  width: '2000px',
-  height: '2000px',
+  top: '-5%',
+  right: '-5%',
+  width: '400px',
+  height: '400px',
   zIndex: 4
 };
 
 const singleSunStyle = {
   position: 'absolute',
-  top: '-10%',
-  right: '-8%',
-  width: '800px',
-  height: '800px',
+  top: '0%',
+  right: '0%',
+  width: '200px',
+  height: '200px',
   objectFit: 'contain',
   filter: 'drop-shadow(0 0 30px rgba(255, 235, 59, 0.9))'
 };
 
-// Satellite - Upper Right (orbiting motion)
+// Satellite - Upper Right (Reduced size to match localhost)
 const satelliteContainerStyle = {
   position: 'absolute',
   top: '20%',
   right: '25%',
-  width: '80px',
-  height: '80px',
+  width: '50px',
+  height: '50px',
   zIndex: 7
 };
 
