@@ -1,0 +1,184 @@
+/* CME Game Responsive Styles */
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .cme-game-container {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  .cme-instructions {
+    top: 120px !important;
+    padding: 20px !important;
+    max-width: 95% !important;
+    min-width: 300px !important;
+    font-size: 16px !important;
+  }
+  
+  .cme-level-title {
+    font-size: 24px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .cme-instruction-text {
+    font-size: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .cme-facts {
+    bottom: 15px !important;
+    right: 15px !important;
+    max-width: 280px !important;
+    padding: 16px !important;
+  }
+  
+  .cme-facts-title {
+    font-size: 16px !important;
+  }
+  
+  .cme-facts-list {
+    font-size: 12px !important;
+  }
+  
+  .cme-pressure-bar {
+    width: 250px !important;
+  }
+  
+  .cme-color-mixing {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  .cme-color-item {
+    justify-content: center !important;
+  }
+  
+  .cme-button-container {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .cme-popup {
+    max-width: 90% !important;
+    min-width: 300px !important;
+    padding: 24px !important;
+  }
+  
+  .cme-completion {
+    max-width: 90% !important;
+    min-width: 300px !important;
+    padding: 32px !important;
+  }
+  
+  .cme-completion-title {
+    font-size: 28px !important;
+  }
+  
+  .cme-completion-text {
+    font-size: 16px !important;
+  }
+  
+  .cme-completion-buttons {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+
+/* Tablet devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cme-instructions {
+    top: 130px !important;
+    padding: 24px !important;
+    max-width: 85% !important;
+    min-width: 350px !important;
+  }
+  
+  .cme-level-title {
+    font-size: 28px !important;
+  }
+  
+  .cme-instruction-text {
+    font-size: 18px !important;
+  }
+  
+  .cme-facts {
+    max-width: 300px !important;
+    padding: 20px !important;
+  }
+  
+  .cme-pressure-bar {
+    width: 280px !important;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+  .cme-instructions {
+    max-width: 80% !important;
+    min-width: 400px !important;
+  }
+  
+  .cme-facts {
+    max-width: 320px !important;
+  }
+  
+  .cme-pressure-bar {
+    width: 300px !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cme-canvas {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .cme-instructions {
+    top: 100px !important;
+    padding: 16px !important;
+  }
+  
+  .cme-facts {
+    bottom: 10px !important;
+    right: 10px !important;
+    max-width: 250px !important;
+    padding: 12px !important;
+  }
+  
+  .cme-level-title {
+    font-size: 20px !important;
+  }
+  
+  .cme-instruction-text {
+    font-size: 14px !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .cme-animation {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .cme-instructions {
+    border-width: 4px !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+  }
+  
+  .cme-facts {
+    border-width: 3px !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+  }
+  
+  .cme-button {
+    border-width: 3px !important;
+  }
+}

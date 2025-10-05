@@ -1,0 +1,4 @@
+:focus{ outline: 3px solid #ffea00; outline-offset: 2px; }
+button:disabled{ opacity:.6; cursor:not-allowed; }
+
+
