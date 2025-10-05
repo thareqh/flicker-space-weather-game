@@ -7,6 +7,7 @@ import nextButtonImage from '../assets/images/next button.png';
 import previousButtonImage from '../assets/images/previous button.png';
 import earthImage from '../assets/images/earth.png';
 import auroraImage from '../assets/images/aurora.png';
+import auroraVideo from '../assets/video/aurora.mp4';
 import rocketImage from '../assets/images/rocket.png';
 import asteroidImage from '../assets/images/asteroid.png';
 import satelliteImage from '../assets/images/satellite.png';
@@ -239,19 +240,39 @@ const StoryContinue = () => {
       {currentStoryScene.assets && (
         <div style={assetsContainerStyle}>
           {currentStoryScene.assets.map((asset, index) => (
-            <motion.img
-              key={`${asset}-${currentScene}`}
-              src={getAssetImage(asset)}
-              alt={asset}
-              style={{
-                ...assetStyle,
-                position: 'absolute',
-                ...getAssetPosition(asset, index)
-              }}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
-            />
+            asset === 'aurora' ? (
+              <motion.video
+                key={`${asset}-${currentScene}`}
+                src={auroraVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{
+                  ...assetStyle,
+                  position: 'absolute',
+                  ...getAssetPosition(asset, index),
+                  objectFit: 'cover'
+                }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
+              />
+            ) : (
+              <motion.img
+                key={`${asset}-${currentScene}`}
+                src={getAssetImage(asset)}
+                alt={asset}
+                style={{
+                  ...assetStyle,
+                  position: 'absolute',
+                  ...getAssetPosition(asset, index)
+                }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
+              />
+            )
           ))}
         </div>
       )}
