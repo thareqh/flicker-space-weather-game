@@ -239,6 +239,16 @@ const TitleScreen = () => {
       >
         <img src={sunImage} alt="Sun" style={singleSunStyle} />
       </motion.div>
+
+      {/* Zoom Recommendation Hint */}
+      <motion.div
+        style={zoomHintStyle}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.5, duration: 0.8 }}
+      >
+        💡 For best experience, view at 80% zoom
+      </motion.div>
     </motion.div>
   );
 };
@@ -431,5 +441,20 @@ const satelliteImageStyle = {
   filter: 'drop-shadow(0 0 10px rgba(100, 181, 246, 0.8))'
 };
 
+const zoomHintStyle = {
+  position: 'absolute',
+  bottom: '20px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  background: 'rgba(0, 0, 0, 0.7)',
+  color: '#ffffff',
+  padding: '8px 16px',
+  borderRadius: '20px',
+  fontSize: '14px',
+  fontFamily: 'Schoolbell, cursive',
+  zIndex: 10,
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(255, 255, 255, 0.2)'
+};
 
 export default TitleScreen;

@@ -19,22 +19,12 @@ html,body,#root{
   padding: 0;
   box-sizing: border-box;
 }
-
 body{
   margin:0;
   font-family: "NunitoRoundedVar", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: linear-gradient(180deg,var(--space-start),var(--space-end));
   color: var(--text);
   overflow: hidden;
-  zoom: 0.8;
-  -moz-transform: scale(0.8);
-  -moz-transform-origin: top left;
-  -webkit-transform: scale(0.8);
-  -webkit-transform-origin: top left;
-  transform: scale(0.8);
-  transform-origin: top left;
-  width: 125%; /* Compensate for the scale */
-  height: 125%;
 }
 .app-container{
   width:100%;

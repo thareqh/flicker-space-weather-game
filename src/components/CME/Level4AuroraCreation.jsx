@@ -14,11 +14,17 @@ const Level4AuroraCreation = ({ onComplete, onProgress, levelData }) => {
   const animationRef = useRef(null);
 
   useEffect(() => {
-    // Generate random target colors
+    // Generate random target colors that add up to 100%
+    const total = 1.0; // 100%
+    const oxygen = Math.random() * 0.4 + 0.3; // 30-70%
+    const remaining = total - oxygen;
+    const nitrogen = Math.random() * remaining * 0.7; // 0-70% of remaining
+    const highOxygen = remaining - nitrogen; // rest to make 100%
+    
     const newTargets = {
-      oxygen: Math.random() * 0.8 + 0.2,
-      nitrogen: Math.random() * 0.6 + 0.1,
-      highOxygen: Math.random() * 0.4 + 0.1
+      oxygen: oxygen,
+      nitrogen: nitrogen,
+      highOxygen: highOxygen
     };
     setTargetColors(newTargets);
     
@@ -184,11 +190,23 @@ const Level4AuroraCreation = ({ onComplete, onProgress, levelData }) => {
             p.id === particle.id ? { ...p, collected: true } : p
           ));
           
-          // Add to aurora colors
-          setAuroraColors(prev => ({
-            ...prev,
-            [particle.type]: Math.min(1, prev[particle.type] + 0.1)
-          }));
+          // Add to aurora colors (smaller increments to prevent exceeding 100%)
+          setAuroraColors(prev => {
+            const newColors = { ...prev };
+            const increment = 0.05; // 5% per particle instead of 10%
+            newColors[particle.type] = Math.min(1, prev[particle.type] + increment);
+            
+            // Ensure total doesn't exceed 100%
+            const total = newColors.oxygen + newColors.nitrogen + newColors.highOxygen;
+            if (total > 1.0) {
+              const scale = 1.0 / total;
+              newColors.oxygen *= scale;
+              newColors.nitrogen *= scale;
+              newColors.highOxygen *= scale;
+            }
+            
+            return newColors;
+          });
           
           setScore(prev => prev + 10);
           setInstructions(`Great! Added ${particle.type} particles to the aurora!`);
@@ -197,10 +215,11 @@ const Level4AuroraCreation = ({ onComplete, onProgress, levelData }) => {
           const totalProgress = (auroraColors.oxygen + auroraColors.nitrogen + auroraColors.highOxygen) / 3;
           onProgress(totalProgress * 100);
           
-          // Check if level is complete
-          if (auroraColors.oxygen >= targetColors.oxygen * 0.8 && 
-              auroraColors.nitrogen >= targetColors.nitrogen * 0.8 && 
-              auroraColors.highOxygen >= targetColors.highOxygen * 0.8) {
+          // Check if level is complete (within 10% of target)
+          const tolerance = 0.1; // 10% tolerance
+          if (Math.abs(auroraColors.oxygen - targetColors.oxygen) <= tolerance && 
+              Math.abs(auroraColors.nitrogen - targetColors.nitrogen) <= tolerance && 
+              Math.abs(auroraColors.highOxygen - targetColors.highOxygen) <= tolerance) {
             onComplete(200 + score);
             setInstructions("Perfect! You've created a beautiful aurora!");
           }
