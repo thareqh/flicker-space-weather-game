@@ -165,14 +165,14 @@ const scoreStyle = {
 
 const scoreLabelStyle = {
   color: 'white',
-  fontSize: '16px',
+  fontSize: '12px',
   fontWeight: '600',
   fontFamily: 'Schoolbell, cursive'
 };
 
 const scoreValueStyle = {
   color: '#ffb300',
-  fontSize: '20px',
+  fontSize: '14px',
   fontWeight: 'bold',
   fontFamily: 'Schoolbell, cursive'
 };

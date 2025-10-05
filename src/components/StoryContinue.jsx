@@ -105,13 +105,22 @@ const StoryContinue = () => {
     {
       id: 8,
       title: "The Magic of Auroras!",
-      flickerMessage: "When my energy reaches Earth's atmosphere, something magical happens! My charged particles create the most beautiful auroras! 🌌 It's like I'm painting the sky with colorful lights!",
-      background: "aurora-scene",
+      flickerMessage: "When my energy reaches Earth's atmosphere, something magical happens! My charged particles create the most beautiful auroras! 🌌 It's like I'm painting the sky with colorful lights! The auroras dance across the polar skies in brilliant greens, purples, and reds!",
+      background: "space-scene",
       flickerState: "excited",
-      assets: ["aurora"]
+      assets: ["earth"]
     },
     {
       id: 9,
+      title: "Witness the Aurora Dance!",
+      flickerMessage: "Look at this amazing aurora in action! 🌌 This is what happens when my solar particles meet Earth's atmosphere - pure magic! The charged particles excite atoms in the atmosphere, creating this incredible light show!",
+      background: "aurora-scene",
+      flickerState: "excited",
+      assets: ["earth", "aurora"],
+      videoFocus: true
+    },
+    {
+      id: 10,
       title: "NASA Scientists Watch Everything!",
       flickerMessage: "Scientists on Earth watch me 24/7 with special satellites! 🛰️ The closest one to me is the Parker Solar Probe - it gets so close it can almost touch my surface! It's like having a brave explorer right next to me!",
       background: "space-scene",
@@ -124,7 +133,7 @@ const StoryContinue = () => {
       ]
     },
     {
-      id: 10,
+      id: 11,
       title: "Ready for Your Space Weather Adventure?",
       flickerMessage: "Now you're ready to explore space weather with me! 🎮 You'll get to experience what it's like to be me - the Sun - creating solar flares and CMEs that travel through space! Let's have an amazing adventure together!",
       background: "space-scene",
@@ -251,12 +260,30 @@ const StoryContinue = () => {
                 style={{
                   ...assetStyle,
                   position: 'absolute',
-                  ...getAssetPosition(asset, index),
-                  objectFit: 'cover'
+                  objectFit: 'cover',
+                  // Enhanced styling for video focus scenes
+                  ...(currentStoryScene.videoFocus ? {
+                    width: '400px',
+                    height: '250px',
+                    top: '20%',
+                    right: '5%',
+                    zIndex: 8,
+                    borderRadius: '15px',
+                    boxShadow: '0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.1)',
+                    border: '2px solid rgba(255, 255, 255, 0.3)'
+                  } : getAssetPosition(asset, index))
                 }}
                 initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: currentStoryScene.videoFocus ? 1.1 : 1,
+                  rotate: currentStoryScene.videoFocus ? [0, 1, -1, 0] : 0
+                }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.5 + index * 0.2,
+                  rotate: currentStoryScene.videoFocus ? { duration: 4, repeat: Infinity, ease: "easeInOut" } : {}
+                }}
               />
             ) : (
               <motion.img
@@ -266,7 +293,9 @@ const StoryContinue = () => {
                 style={{
                   ...assetStyle,
                   position: 'absolute',
-                  ...getAssetPosition(asset, index)
+                  ...getAssetPosition(asset, index),
+                  // Dim other assets when video is the focus
+                  ...(currentStoryScene.videoFocus ? { opacity: 0.4 } : {})
                 }}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -349,7 +378,7 @@ const StoryContinue = () => {
           />
           
           {/* Orbiting Satellite for NASA Scientists scene */}
-          {currentStoryScene.id === 8 && currentStoryScene.customElements?.some(el => el.orbit) && (
+          {currentStoryScene.id === 10 && currentStoryScene.customElements?.some(el => el.orbit) && (
             <motion.div
               style={{
                 position: 'absolute',

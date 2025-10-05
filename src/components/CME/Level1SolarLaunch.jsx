@@ -197,19 +197,19 @@ const instructionsStyle = {
   textAlign: 'center',
   zIndex: 10,
   background: 'rgba(255, 255, 255, 0.15)',
-  padding: '24px 32px',
-  borderRadius: '24px',
+  padding: '16px 24px',
+  borderRadius: '18px',
   backdropFilter: 'blur(15px)',
   border: '2px solid rgba(255, 255, 255, 0.25)',
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-  maxWidth: '600px',
-  minWidth: '400px'
+  maxWidth: '450px',
+  minWidth: '300px'
 };
 
 const levelTitleStyle = {
   color: 'white',
-  fontSize: '36px',
-  margin: '0 0 16px 0',
+  fontSize: '24px',
+  margin: '0 0 12px 0',
   fontFamily: 'Schoolbell, cursive',
   fontWeight: 'bold',
   textShadow: '0 2px 12px rgba(0,0,0,0.4)',
@@ -219,10 +219,10 @@ const levelTitleStyle = {
 
 const instructionTextStyle = {
   color: 'white',
-  fontSize: '22px',
-  margin: '0 0 20px 0',
+  fontSize: '16px',
+  margin: '0 0 16px 0',
   fontFamily: 'Schoolbell, cursive',
-  lineHeight: '1.7',
+  lineHeight: '1.5',
   textAlign: 'center',
   whiteSpace: 'pre-line',
   textShadow: '0 2px 6px rgba(0, 0, 0, 0.4)',
