@@ -272,11 +272,26 @@ const StoryContinue = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 + index * 0.3 }}
             >
-              {/* Regular custom element */}
-              <div style={customElementTextStyle}>
-                <span style={emojiStyle}>{element.emoji}</span>
-                {element.text}
-              </div>
+              {/* Check if this is a flare class element that needs an image */}
+              {['a-class', 'b-class', 'c-class', 'm-class', 'x-class'].includes(element.type) ? (
+                <div style={flareClassElementStyle}>
+                  <img 
+                    src={getAssetImage(element.type)} 
+                    alt={element.text}
+                    style={flareClassImageStyle}
+                  />
+                  <div style={customElementTextStyle}>
+                    <span style={emojiStyle}>{element.emoji}</span>
+                    {element.text}
+                  </div>
+                </div>
+              ) : (
+                /* Regular custom element */
+                <div style={customElementTextStyle}>
+                  <span style={emojiStyle}>{element.emoji}</span>
+                  {element.text}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -752,6 +767,23 @@ const decorativeElement2Style = {
   borderRadius: '50%',
   boxShadow: '0 0 20px rgba(255, 235, 59, 0.6)',
   zIndex: 1
+};
+
+const flareClassElementStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '8px',
+  textAlign: 'center'
+};
+
+const flareClassImageStyle = {
+  width: '60px',
+  height: '60px',
+  objectFit: 'contain',
+  borderRadius: '8px',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+  border: '2px solid rgba(255, 255, 255, 0.2)'
 };
 
 export default StoryContinue;
