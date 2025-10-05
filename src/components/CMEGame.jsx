@@ -181,7 +181,7 @@ const CMEGame = () => {
                   Play Again
                 </button>
                 <button style={buttonStyle} onClick={handleBackToStory}>
-                  Back to Story
+                  Continue to Quiz
                 </button>
               </div>
             </motion.div>

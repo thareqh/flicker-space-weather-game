@@ -116,8 +116,8 @@ const StoryQuiz = () => {
     setIsAnswered(false);
   };
 
-  const handleBackToStory = () => {
-    navigate('/story-continue');
+  const handleBackToTitle = () => {
+    navigate('/');
   };
 
   const getScoreMessage = () => {
@@ -161,20 +161,12 @@ const StoryQuiz = () => {
             
             <div style={buttonContainerStyle}>
               <motion.button
-                onClick={handleRestart}
+                onClick={handleBackToTitle}
                 style={primaryButtonStyle}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Try Again
-              </motion.button>
-              <motion.button
-                onClick={handleBackToStory}
-                style={secondaryButtonStyle}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Back to Story
+                Back to Title Screen
               </motion.button>
             </div>
           </div>

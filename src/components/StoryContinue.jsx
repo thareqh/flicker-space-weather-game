@@ -128,8 +128,7 @@ const StoryContinue = () => {
       flickerMessage: "Now you're ready to explore space weather with me! 🎮 You'll get to experience what it's like to be me - the Sun - creating solar flares and CMEs that travel through space! Let's have an amazing adventure together!",
       background: "space-scene",
       flickerState: "excited",
-      assets: ["rocket"],
-      showGameButton: true
+      assets: ["rocket"]
     }
   ];
 
@@ -146,9 +145,6 @@ const StoryContinue = () => {
     }
   };
 
-  const startCMEGame = () => {
-    navigate('/cme-game');
-  };
 
   const prevScene = () => {
     if (currentScene > 0) {
@@ -400,18 +396,6 @@ const StoryContinue = () => {
           />
         </motion.button>
 
-        {/* CME Game Button - only show on last scene */}
-        {currentStoryScene.showGameButton && (
-          <motion.button
-            onClick={startCMEGame}
-            style={gameButtonStyle}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.5, duration: 0.5 }}
-          >
-            🎮 Start CME Adventure!
-          </motion.button>
-        )}
 
         {/* Next Button */}
         <motion.button
