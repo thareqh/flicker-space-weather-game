@@ -14,30 +14,53 @@ const Level4AuroraCreation = ({ onComplete, onProgress, levelData }) => {
   const animationRef = useRef(null);
 
   useEffect(() => {
-    // Generate random target colors that add up to 100%
+    // Generate random target colors that add up to 100% and round to nearest 10%
     const total = 1.0; // 100%
     const oxygen = Math.random() * 0.4 + 0.3; // 30-70%
     const remaining = total - oxygen;
     const nitrogen = Math.random() * remaining * 0.7; // 0-70% of remaining
     const highOxygen = remaining - nitrogen; // rest to make 100%
     
+    // Round to nearest 10%
+    const roundToTen = (value) => Math.round(value * 10) / 10;
+    
     const newTargets = {
-      oxygen: oxygen,
-      nitrogen: nitrogen,
-      highOxygen: highOxygen
+      oxygen: roundToTen(oxygen),
+      nitrogen: roundToTen(nitrogen),
+      highOxygen: roundToTen(highOxygen)
     };
+    
+    // Ensure they still add up to 100% after rounding
+    const roundedTotal = newTargets.oxygen + newTargets.nitrogen + newTargets.highOxygen;
+    if (roundedTotal !== 1.0) {
+      // Adjust the largest value to make it exactly 100%
+      const diff = 1.0 - roundedTotal;
+      if (newTargets.oxygen >= newTargets.nitrogen && newTargets.oxygen >= newTargets.highOxygen) {
+        newTargets.oxygen += diff;
+      } else if (newTargets.nitrogen >= newTargets.highOxygen) {
+        newTargets.nitrogen += diff;
+      } else {
+        newTargets.highOxygen += diff;
+      }
+    }
+    
     setTargetColors(newTargets);
     
-    // Generate particles
+    // Generate particles with safe zones
     const newParticles = [];
-    for (let i = 0; i < 20; i++) {
+    const safeZoneTop = 100; // Safe zone from top (navbar area)
+    const safeZoneBottom = 100; // Safe zone from bottom
+    const safeZoneLeft = 50; // Safe zone from left
+    const safeZoneRight = 50; // Safe zone from right
+    
+    for (let i = 0; i < 35; i++) { // Increased from 20 to 35 particles
       newParticles.push({
         id: i,
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
+        x: safeZoneLeft + Math.random() * (window.innerWidth - safeZoneLeft - safeZoneRight),
+        y: safeZoneTop + Math.random() * (window.innerHeight - safeZoneTop - safeZoneBottom),
         type: ['oxygen', 'nitrogen', 'highOxygen'][Math.floor(Math.random() * 3)],
         collected: false,
-        size: Math.random() * 10 + 5
+        size: Math.random() * 8 + 6 // Slightly smaller size range
       });
     }
     setParticles(newParticles);
@@ -190,10 +213,10 @@ const Level4AuroraCreation = ({ onComplete, onProgress, levelData }) => {
             p.id === particle.id ? { ...p, collected: true } : p
           ));
           
-          // Add to aurora colors (smaller increments to prevent exceeding 100%)
+          // Add to aurora colors (10% per particle to match rounded targets)
           setAuroraColors(prev => {
             const newColors = { ...prev };
-            const increment = 0.05; // 5% per particle instead of 10%
+            const increment = 0.1; // 10% per particle
             newColors[particle.type] = Math.min(1, prev[particle.type] + increment);
             
             // Ensure total doesn't exceed 100%

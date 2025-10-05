@@ -14,6 +14,9 @@ import spacecraftImage from '../assets/images/spacecraft.png';
 import moonImage from '../assets/images/moon.png';
 import saturnImage from '../assets/images/saturn.png';
 import sunImage from '../assets/images/sun.png';
+import cClassImage from '../assets/images/c-class.png';
+import mClassImage from '../assets/images/m-class.png';
+import xClassImage from '../assets/images/x-class.png';
 
 const StoryContinue = () => {
   const navigate = useNavigate();
@@ -47,6 +50,30 @@ const StoryContinue = () => {
     },
     {
       id: 4,
+      title: "Solar Flare Classes — from A to X",
+      flickerMessage: "Did you know my flares come in different strengths? Scientists measure them like earthquakes! 📊 A-class flares are the weakest - almost hidden above my background light. B, C, M, and X-class flares get stronger and stronger!",
+      background: "space-scene",
+      flickerState: "excited",
+      assets: ["sun"],
+      customElements: [
+        { type: "a-class", text: "A-class: weakest flares", emoji: "🔸", class: "a-class" },
+        { type: "b-class", text: "B-class: slightly stronger", emoji: "🔹", class: "b-class" },
+        { type: "c-class", text: "C-class: moderate flares", emoji: "🔷", class: "c-class" },
+        { type: "m-class", text: "M-class: major flares", emoji: "🔶", class: "m-class" },
+        { type: "x-class", text: "X-class: most powerful!", emoji: "🔴", class: "x-class" }
+      ],
+      educationalContent: {
+        title: "Solar Flare Scale",
+        description: "Think of it like the Richter scale for earthquakes: each class is 10× stronger than the one before it!",
+        facts: [
+          "An X flare is 10 times stronger than an M flare",
+          "An X flare is 100× stronger than a C flare",
+          "X-class flares can cause radio blackouts on Earth!"
+        ]
+      }
+    },
+    {
+      id: 5,
       title: "When I Sneeze - CMEs!",
       flickerMessage: "And sometimes I sneeze! ☁️ When I sneeze, I send out giant clouds of charged particles called CMEs (Coronal Mass Ejections). It's like when you sneeze and everything around you gets a little messy!",
       background: "space-scene",
@@ -54,7 +81,7 @@ const StoryContinue = () => {
       assets: ["earth"]
     },
     {
-      id: 5,
+      id: 6,
       title: "My Energy Travels to Earth!",
       flickerMessage: "My solar flares and CMEs travel all the way to Earth! 🌍 They don't mean to cause trouble - they're just naturally flowing outward from me! It's like when you blow bubbles and they float away!",
       background: "space-scene",
@@ -67,7 +94,7 @@ const StoryContinue = () => {
       ]
     },
     {
-      id: 6,
+      id: 7,
       title: "Earth's Amazing Protection!",
       flickerMessage: "But don't worry! Earth has amazing shields to protect everyone! 🛡️ Earth's magnetic field acts like a giant protective bubble that deflects most of my energy!",
       background: "space-scene",
@@ -75,7 +102,7 @@ const StoryContinue = () => {
       assets: ["earth"]
     },
     {
-      id: 7,
+      id: 8,
       title: "The Magic of Auroras!",
       flickerMessage: "When my energy reaches Earth's atmosphere, something magical happens! My charged particles create the most beautiful auroras! 🌌 It's like I'm painting the sky with colorful lights!",
       background: "aurora-scene",
@@ -83,7 +110,7 @@ const StoryContinue = () => {
       assets: ["aurora"]
     },
     {
-      id: 8,
+      id: 9,
       title: "NASA Scientists Watch Everything!",
       flickerMessage: "Scientists on Earth watch me 24/7 with special satellites! 🛰️ The closest one to me is the Parker Solar Probe - it gets so close it can almost touch my surface! It's like having a brave explorer right next to me!",
       background: "space-scene",
@@ -96,7 +123,7 @@ const StoryContinue = () => {
       ]
     },
     {
-      id: 9,
+      id: 10,
       title: "Ready for Your Space Weather Adventure?",
       flickerMessage: "Now you're ready to explore space weather with me! 🎮 You'll get to experience what it's like to be me - the Sun - creating solar flares and CMEs that travel through space! Let's have an amazing adventure together!",
       background: "space-scene",
@@ -149,6 +176,11 @@ const StoryContinue = () => {
       case 'moon': return moonImage;
       case 'saturn': return saturnImage;
       case 'sun': return sunImage;
+      case 'a-class': return sunImage; // Use sun image for A class
+      case 'b-class': return sunImage; // Use sun image for B class
+      case 'c-class': return cClassImage;
+      case 'm-class': return mClassImage;
+      case 'x-class': return xClassImage;
       default: return earthImage;
     }
   };
@@ -163,7 +195,12 @@ const StoryContinue = () => {
       'spacecraft': { top: '35%', right: '15%', width: '80px', height: '80px' },
       'moon': { top: '25%', left: '2%', width: '40px', height: '40px' },
       'saturn': { bottom: '3%', right: '3%', width: '350px', height: '350px' },
-      'sun': { top: '1%', left: '50%', transform: 'translateX(-50%)', width: '65px', height: '65px' }
+      'sun': { top: '1%', left: '50%', transform: 'translateX(-50%)', width: '65px', height: '65px' },
+      'a-class': { top: '15%', left: '10%', width: '60px', height: '60px' },
+      'b-class': { top: '25%', left: '20%', width: '60px', height: '60px' },
+      'c-class': { top: '35%', left: '30%', width: '60px', height: '60px' },
+      'm-class': { top: '45%', left: '40%', width: '60px', height: '60px' },
+      'x-class': { top: '55%', left: '50%', width: '60px', height: '60px' }
     };
     return positions[asset] || { top: '50%', left: '50%', width: '100px', height: '100px' };
   };
