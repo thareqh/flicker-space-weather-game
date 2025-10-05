@@ -102,7 +102,7 @@ const CMEGame = () => {
   };
 
   const handleBackToStory = () => {
-    navigate('/story-continue');
+    navigate('/quiz');
   };
 
   const LevelComponent = currentLevelData.component;

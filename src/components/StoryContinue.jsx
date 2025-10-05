@@ -114,8 +114,8 @@ const StoryContinue = () => {
         setIsTransitioning(false);
       }, 500);
     } else {
-      // End of story, go to quiz
-      navigate('/quiz');
+      // End of story, go to game
+      navigate('/cme-game');
     }
   };
 
