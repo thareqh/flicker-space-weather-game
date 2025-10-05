@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/flicker-space-weather-game/',
+  // Remove base path for GitHub Pages deployment
+  // base: '/flicker-space-weather-game/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
