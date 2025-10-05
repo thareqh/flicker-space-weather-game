@@ -46,9 +46,10 @@ const TitleScreen = () => {
       </div>
 
       {/* Central Title */}
-      <div style={titleContainerStyle}>
+      <div style={titleContainerStyle} className="title-container">
         <motion.h1 
           style={mainTitleStyle}
+          className="title-screen"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
@@ -58,6 +59,7 @@ const TitleScreen = () => {
         
         <motion.p 
           style={subtitleStyle}
+          className="title-screen"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
@@ -71,6 +73,7 @@ const TitleScreen = () => {
         <motion.button
           onClick={startGame}
           style={startButtonStyle}
+          className="title-screen"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 1.8, duration: 0.6 }}
@@ -283,7 +286,7 @@ const mainTitleStyle = {
   fontWeight: 'bold',
   color: '#ffffff',
   margin: '0 0 16px 0',
-  fontFamily: 'system-ui, sans-serif',
+  fontFamily: 'Schoolbell, cursive',
   textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
   letterSpacing: '4px'
 };
@@ -292,7 +295,7 @@ const subtitleStyle = {
   fontSize: '24px',
   color: '#ffffff',
   margin: '0 0 32px 0',
-  fontFamily: 'system-ui, sans-serif',
+  fontFamily: 'Schoolbell, cursive',
   fontWeight: '300',
   textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
 };
