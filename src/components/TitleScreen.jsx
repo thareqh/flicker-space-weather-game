@@ -92,8 +92,8 @@ const TitleScreen = () => {
           position: 'absolute',
           left: '5%',
           bottom: '12%',
-          width: '60px',
-          height: '80px',
+          width: '100px',
+          height: '120px',
           zIndex: 6,
           transformOrigin: 'center center'
         }}
@@ -364,9 +364,9 @@ const rocketImageStyle = {
 const asteroidsContainerStyle = {
   position: 'absolute',
   top: '35%',
-  left: '15%',
-  width: '80px',
-  height: '60px',
+  left: '18%',
+  width: '120px',
+  height: '100px',
   zIndex: 5
 };
 
@@ -380,10 +380,10 @@ const asteroidImageStyle = {
 // Earth - Bottom Left (Large but reasonable size, half visible at edge)
 const earthContainerStyle = {
   position: 'absolute',
-  bottom: '-5%',
-  left: '-5%',
-  width: '300px',
-  height: '300px',
+  bottom: '-15%',
+  left: '-10%',
+  width: '600px',
+  height: '600px',
   zIndex: 3
 };
 
@@ -397,19 +397,19 @@ const earthImageStyle = {
 // Sun - Upper Right (Visible on screen with edge effect)
 const sunsContainerStyle = {
   position: 'absolute',
-  top: '-5%',
-  right: '-5%',
-  width: '400px',
-  height: '400px',
+  top: '-15%',
+  right: '-10%',
+  width: '2000px',
+  height: '2000px',
   zIndex: 4
 };
 
 const singleSunStyle = {
   position: 'absolute',
-  top: '0%',
-  right: '0%',
-  width: '200px',
-  height: '200px',
+  top: '-10%',
+  right: '-8%',
+  width: '800px',
+  height: '800px',
   objectFit: 'contain',
   filter: 'drop-shadow(0 0 30px rgba(255, 235, 59, 0.9))'
 };
@@ -419,8 +419,8 @@ const satelliteContainerStyle = {
   position: 'absolute',
   top: '20%',
   right: '25%',
-  width: '50px',
-  height: '50px',
+  width: '80px',
+  height: '80px',
   zIndex: 7
 };
 
