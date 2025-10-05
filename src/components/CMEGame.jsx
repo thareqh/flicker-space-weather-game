@@ -17,6 +17,7 @@ const CMEGame = () => {
   const [levelProgress, setLevelProgress] = useState(0);
   const [showEducationalPopup, setShowEducationalPopup] = useState(false);
   const [currentPopup, setCurrentPopup] = useState(null);
+  const [levelCompleted, setLevelCompleted] = useState(false);
 
   const levels = [
     {
@@ -68,6 +69,10 @@ const CMEGame = () => {
   const currentLevelData = levels[currentLevel - 1];
 
   const handleLevelComplete = (levelScore) => {
+    // Prevent multiple calls
+    if (levelCompleted) return;
+    
+    setLevelCompleted(true);
     setScore(prev => prev + levelScore);
     setLevelProgress(100);
     
@@ -82,6 +87,7 @@ const CMEGame = () => {
   const handleNextLevel = () => {
     setShowEducationalPopup(false);
     setCurrentPopup(null);
+    setLevelCompleted(false); // Reset the completion flag
     
     if (currentLevel < levels.length) {
       setCurrentLevel(prev => prev + 1);
@@ -99,6 +105,7 @@ const CMEGame = () => {
     setGameState('playing');
     setShowEducationalPopup(false);
     setCurrentPopup(null);
+    setLevelCompleted(false); // Reset the completion flag
   };
 
   const handleBackToStory = () => {

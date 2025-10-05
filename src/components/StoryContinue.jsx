@@ -203,9 +203,11 @@ const StoryContinue = () => {
 
   const getCustomElementPosition = (index) => {
     const positions = [
-      { top: '20%', left: '10%' },
-      { top: '40%', right: '15%' },
-      { bottom: '25%', left: '20%' }
+      { top: '10%', left: '8%' },      // A-class - top left
+      { top: '10%', right: '8%' },     // B-class - top right
+      { top: '35%', left: '8%' },      // C-class - middle left
+      { top: '35%', right: '8%' },     // M-class - middle right
+      { bottom: '10%', left: '50%', transform: 'translateX(-50%)' }   // X-class - bottom center
     ];
     return positions[index] || { top: '50%', left: '50%' };
   };
@@ -479,6 +481,14 @@ const StoryContinue = () => {
 };
 
 // Styles
+const flareClassElementStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '8px',
+  textAlign: 'center'
+};
+
 const containerStyle = {
   width: '100vw',
   height: '100vh',
@@ -719,21 +729,26 @@ const customElementsContainerStyle = {
 
 const customElementStyle = {
   position: 'absolute',
-  background: 'rgba(255, 255, 255, 0.1)',
-  borderRadius: '12px',
-  padding: '12px 16px',
-  backdropFilter: 'blur(10px)',
-  border: '2px solid rgba(255, 255, 255, 0.2)',
-  maxWidth: '180px'
+  background: 'rgba(255, 255, 255, 0.15)',
+  borderRadius: '16px',
+  padding: '16px 20px',
+  backdropFilter: 'blur(15px)',
+  border: '2px solid rgba(255, 255, 255, 0.3)',
+  maxWidth: '220px',
+  minWidth: '200px',
+  zIndex: 8,
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
 };
 
 const customElementTextStyle = {
-  fontSize: '16px',
+  fontSize: '18px',
   color: '#ffffff',
   textAlign: 'center',
-  lineHeight: '1.4',
-  textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
-  fontFamily: 'Schoolbell, cursive'
+  lineHeight: '1.5',
+  textShadow: '0 2px 6px rgba(0, 0, 0, 0.4)',
+  fontFamily: 'Schoolbell, cursive',
+  fontWeight: '600',
+  marginTop: '8px'
 };
 
 const emojiStyle = {
@@ -766,31 +781,23 @@ const decorativeElement2Style = {
   zIndex: 1
 };
 
-const flareClassElementStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '8px',
-  textAlign: 'center'
-};
-
 const flareClassImageStyle = {
-  width: '60px',
-  height: '60px',
+  width: '100px',
+  height: '100px',
   objectFit: 'contain',
-  borderRadius: '8px',
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-  border: '2px solid rgba(255, 255, 255, 0.2)'
+  borderRadius: '12px',
+  boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
+  border: '2px solid rgba(255, 255, 255, 0.3)'
 };
 
 const getFlareClassImageStyle = (flareType) => {
   const baseStyle = {
-    width: '50px',
-    height: '50px',
+    width: '100px',
+    height: '100px',
     objectFit: 'contain',
-    borderRadius: '8px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-    border: '2px solid rgba(255, 255, 255, 0.2)'
+    borderRadius: '12px',
+    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
+    border: '2px solid rgba(255, 255, 255, 0.3)'
   };
 
   // Special styling for A and B class to make them more visible

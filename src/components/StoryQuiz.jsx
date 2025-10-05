@@ -204,8 +204,8 @@ const StoryQuiz = () => {
       
       {/* Header */}
       <div style={headerStyle}>
-        <button onClick={handleBackToStory} style={backButtonStyle}>
-          ← Back to Story
+        <button onClick={handleBackToTitle} style={backButtonStyle}>
+          ← Back to Title
         </button>
       </div>
 
