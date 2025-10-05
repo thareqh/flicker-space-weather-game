@@ -192,11 +192,11 @@ const StoryContinue = () => {
       'moon': { top: '25%', left: '2%', width: '40px', height: '40px' },
       'saturn': { bottom: '3%', right: '3%', width: '350px', height: '350px' },
       'sun': { top: '1%', left: '50%', transform: 'translateX(-50%)', width: '65px', height: '65px' },
-      'a-class': { top: '15%', left: '10%', width: '60px', height: '60px' },
-      'b-class': { top: '25%', left: '20%', width: '60px', height: '60px' },
-      'c-class': { top: '35%', left: '30%', width: '60px', height: '60px' },
-      'm-class': { top: '45%', left: '40%', width: '60px', height: '60px' },
-      'x-class': { top: '55%', left: '50%', width: '60px', height: '60px' }
+      'a-class': { top: '15%', left: '5%', width: '50px', height: '50px' },
+      'b-class': { top: '25%', left: '5%', width: '50px', height: '50px' },
+      'c-class': { top: '15%', right: '5%', width: '50px', height: '50px' },
+      'm-class': { top: '25%', right: '5%', width: '50px', height: '50px' },
+      'x-class': { top: '35%', right: '5%', width: '50px', height: '50px' }
     };
     return positions[asset] || { top: '50%', left: '50%', width: '100px', height: '100px' };
   };
@@ -271,11 +271,24 @@ const StoryContinue = () => {
               {/* Check if this is a flare class element that needs an image */}
               {['a-class', 'b-class', 'c-class', 'm-class', 'x-class'].includes(element.type) ? (
                 <div style={flareClassElementStyle}>
-                  <img 
-                    src={getAssetImage(element.type)} 
-                    alt={element.text}
-                    style={flareClassImageStyle}
-                  />
+                  <div style={getFlareClassContainerStyle(element.type)}>
+                    <img 
+                      src={getAssetImage(element.type)} 
+                      alt={element.text}
+                      style={getFlareClassImageStyle(element.type)}
+                    />
+                    {/* Add visual indicator for A and B class */}
+                    {element.type === 'a-class' && (
+                      <div style={flareIndicatorStyle}>
+                        <span style={indicatorTextStyle}>A</span>
+                      </div>
+                    )}
+                    {element.type === 'b-class' && (
+                      <div style={flareIndicatorStyle}>
+                        <span style={indicatorTextStyle}>B</span>
+                      </div>
+                    )}
+                  </div>
                   <div style={customElementTextStyle}>
                     <span style={emojiStyle}>{element.emoji}</span>
                     {element.text}
@@ -768,6 +781,94 @@ const flareClassImageStyle = {
   borderRadius: '8px',
   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
   border: '2px solid rgba(255, 255, 255, 0.2)'
+};
+
+const getFlareClassImageStyle = (flareType) => {
+  const baseStyle = {
+    width: '50px',
+    height: '50px',
+    objectFit: 'contain',
+    borderRadius: '8px',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+    border: '2px solid rgba(255, 255, 255, 0.2)'
+  };
+
+  // Special styling for A and B class to make them more visible
+  if (flareType === 'a-class') {
+    return {
+      ...baseStyle,
+      filter: 'brightness(0.3) contrast(2) saturate(0.5)',
+      opacity: '0.6',
+      border: '2px solid rgba(255, 255, 255, 0.1)',
+      boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)'
+    };
+  }
+  
+  if (flareType === 'b-class') {
+    return {
+      ...baseStyle,
+      filter: 'brightness(0.5) contrast(1.5) saturate(0.7)',
+      opacity: '0.7',
+      border: '2px solid rgba(255, 255, 255, 0.15)',
+      boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)'
+    };
+  }
+
+  return baseStyle;
+};
+
+const getFlareClassContainerStyle = (flareType) => {
+  const baseStyle = {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+
+  // Add background for A and B class to make them more visible
+  if (flareType === 'a-class') {
+    return {
+      ...baseStyle,
+      background: 'rgba(255, 255, 255, 0.1)',
+      borderRadius: '12px',
+      padding: '4px',
+      border: '1px solid rgba(255, 255, 255, 0.2)'
+    };
+  }
+  
+  if (flareType === 'b-class') {
+    return {
+      ...baseStyle,
+      background: 'rgba(255, 255, 255, 0.15)',
+      borderRadius: '12px',
+      padding: '4px',
+      border: '1px solid rgba(255, 255, 255, 0.3)'
+    };
+  }
+
+  return baseStyle;
+};
+
+const flareIndicatorStyle = {
+  position: 'absolute',
+  top: '-8px',
+  right: '-8px',
+  background: 'rgba(255, 255, 255, 0.9)',
+  borderRadius: '50%',
+  width: '20px',
+  height: '20px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  border: '2px solid rgba(0, 0, 0, 0.3)',
+  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.3)'
+};
+
+const indicatorTextStyle = {
+  fontSize: '12px',
+  fontWeight: 'bold',
+  color: '#000',
+  fontFamily: 'Schoolbell, cursive'
 };
 
 export default StoryContinue;
