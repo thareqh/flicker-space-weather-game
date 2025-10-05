@@ -8,18 +8,18 @@
   
   /* Title Screen responsive adjustments */
   .title-screen h1 {
-    font-size: 36px !important;
+    font-size: 48px !important;
     letter-spacing: 2px !important;
   }
   
   .title-screen p {
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
   
   /* Adjust button size for mobile */
   .title-screen button {
-    width: 60px !important;
-    height: 60px !important;
+    width: 80px !important;
+    height: 80px !important;
   }
   
   /* Adjust positioning for mobile */
@@ -28,7 +28,7 @@
     padding: 0 10px !important;
   }
   
-  /* Hide or reduce celestial bodies on mobile for better performance */
+  /* Scale down celestial bodies on mobile for better performance and layout */
   .title-screen .earth-container,
   .title-screen .sun-container,
   .title-screen .asteroids-container,
@@ -53,6 +53,18 @@
   .title-screen .sun-container {
     top: -10% !important;
     right: -15% !important;
+  }
+  
+  /* Adjust asteroids for mobile */
+  .title-screen .asteroids-container {
+    left: 10% !important;
+    top: 30% !important;
+  }
+  
+  /* Adjust satellite for mobile */
+  .title-screen .satellite-container {
+    right: 20% !important;
+    top: 15% !important;
   }
 }
 

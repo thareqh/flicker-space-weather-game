@@ -360,7 +360,7 @@ const rocketImageStyle = {
   filter: 'drop-shadow(0 0 12px rgba(244, 67, 54, 0.6))'
 };
 
-// Asteroids - Mid Left (Reduced size to match localhost)
+// Asteroids - Mid Left (Better positioned above Earth, left of title)
 const asteroidsContainerStyle = {
   position: 'absolute',
   top: '35%',
@@ -377,7 +377,7 @@ const asteroidImageStyle = {
   filter: 'drop-shadow(0 0 8px rgba(158, 158, 158, 0.5))'
 };
 
-// Earth - Bottom Left (Reduced size to match localhost)
+// Earth - Bottom Left (Large but reasonable size, half visible at edge)
 const earthContainerStyle = {
   position: 'absolute',
   bottom: '-5%',
@@ -394,7 +394,7 @@ const earthImageStyle = {
   filter: 'drop-shadow(0 0 25px rgba(33, 150, 243, 0.7))'
 };
 
-// Sun - Upper Right (Reduced size to match localhost)
+// Sun - Upper Right (Visible on screen with edge effect)
 const sunsContainerStyle = {
   position: 'absolute',
   top: '-5%',
@@ -414,7 +414,7 @@ const singleSunStyle = {
   filter: 'drop-shadow(0 0 30px rgba(255, 235, 59, 0.9))'
 };
 
-// Satellite - Upper Right (Reduced size to match localhost)
+// Satellite - Upper Right (orbiting motion)
 const satelliteContainerStyle = {
   position: 'absolute',
   top: '20%',
