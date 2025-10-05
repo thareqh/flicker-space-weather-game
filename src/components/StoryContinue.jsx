@@ -203,11 +203,11 @@ const StoryContinue = () => {
 
   const getCustomElementPosition = (index) => {
     const positions = [
-      { top: '15%', left: '15%' },     // A-class - top row left
-      { top: '15%', right: '15%' },    // B-class - top row right
-      { top: '55%', left: '10%' },     // C-class - bottom row left
-      { top: '55%', left: '50%', transform: 'translateX(-50%)' },  // M-class - bottom row center
-      { top: '55%', right: '10%' }     // X-class - bottom row right
+      { top: '20%', left: '10%' },     // A-class - left column top
+      { top: '45%', left: '10%' },     // B-class - left column bottom
+      { top: '15%', right: '10%' },    // C-class - right column top
+      { top: '40%', right: '10%' },    // M-class - right column middle
+      { top: '65%', right: '10%' }     // X-class - right column bottom
     ];
     return positions[index] || { top: '50%', left: '50%' };
   };
